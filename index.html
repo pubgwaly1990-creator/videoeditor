@@ -280,22 +280,25 @@
         <p class="text-xs">&copy; 2026 Grow Future. Professional Video Generation & Editing Platform.</p>
     </footer>
 
-    <!-- Firebase SDK Script Integration -->
+    <!-- Firebase SDK Script Integration (videoeditor-46437) -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/13.3.0/firebase-firestore.js";
 
         const firebaseConfig = {
-            apiKey: "AIzaSyCv0c9tZyWX5Wy6GZ5e-vLpVQWM3xFELJk",
-            authDomain: "noorhomeappliances-d46f8.firebaseapp.com",
-            projectId: "noorhomeappliances-d46f8",
-            storageBucket: "noorhomeappliances-d46f8.appspot.com",
-            messagingSenderId: "525504102679",
-            appId: "1:525504102679:web:3f98914a272a2c4f783752",
-            measurementId: "G-V829VYR101"
+            apiKey: "AIzaSyAtMTp1ukBnfFLx6LGrJIwAM-YK0aEX6po",
+            authDomain: "videoeditor-46437.firebaseapp.com",
+            projectId: "videoeditor-46437",
+            storageBucket: "videoeditor-46437.firebasestorage.app",
+            messagingSenderId: "79652890592",
+            appId: "1:79652890592:web:d7fb91e064896e2f922d85",
+            measurementId: "G-P7LF2YTX3S"
         };
 
+        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
         const db = getFirestore(app);
 
         onSnapshot(collection(db, "video_payments"), (snapshot) => {
