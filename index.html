@@ -233,7 +233,7 @@
             </div>
         </div>
 
-        <!-- 4. ADMIN PANEL TAB (Protected by PIN 7866) -->
+        <!-- 4. ADMIN PANEL TAB (Protected by PIN 4172) -->
         <div id="admin-panel" class="tab-content">
             <div class="max-w-4xl mx-auto bg-zinc-950 border border-zinc-800 rounded-3xl p-8 shadow-2xl space-y-8">
                 <div class="flex justify-between items-center border-b border-zinc-800 pb-4">
@@ -264,12 +264,13 @@
 
     </main>
 
-    <!-- Admin PIN Modal (Hidden PIN 7866) -->
+    <!-- Admin PIN Modal (Hidden PIN 4172) -->
     <div id="admin-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 hidden p-4">
         <div class="bg-zinc-950 border border-zinc-800 p-6 rounded-2xl w-full max-w-sm relative space-y-4 shadow-2xl">
             <button onclick="closeAdminModal()" class="absolute top-3 right-3 text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
             <h3 class="text-base font-bold text-white"><i class="fa-solid fa-lock text-zinc-400 mr-1"></i> Admin Login</h3>
             <p class="text-xs text-zinc-400">Enter secure admin PIN.</p>
+            <!-- Type password ensures numbers are hidden as dots -->
             <input type="password" id="admin-pin-input" placeholder="Enter PIN" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-2.5 text-xs text-zinc-200 text-center tracking-widest">
             <button onclick="verifyAdminPin()" class="w-full bg-zinc-200 hover:bg-white text-zinc-950 font-bold py-2.5 rounded-xl text-xs uppercase">Login</button>
         </div>
@@ -296,7 +297,6 @@
             measurementId: "G-P7LF2YTX3S"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
         const db = getFirestore(app);
@@ -334,7 +334,6 @@
         let selectedPackagePrice = 300;
         let selectedCustomerPhotoData = '';
 
-        // Compress Image Helper for Firestore Storage
         function compressImageFile(file) {
             return new Promise((resolve) => {
                 if (!file) { resolve(''); return; }
@@ -421,7 +420,7 @@
 
         window.verifyAdminPin = function() {
             let pin = document.getElementById('admin-pin-input').value.trim();
-            if(pin === "7866") {
+            if(pin === "4172") {
                 closeAdminModal();
                 document.getElementById('admin-pin-input').value = '';
                 window.switchTab('admin-panel');
@@ -430,7 +429,6 @@
             }
         };
 
-        // User Submits Payment
         window.submitPaymentRequest = async function() {
             const pkg = document.getElementById('pay-package').value;
             const name = document.getElementById('pay-name').value.trim();
@@ -487,7 +485,6 @@
             }
         };
 
-        // User Submits Video Request (Photo + WhatsApp + Description)
         window.submitVideoOrder = async function() {
             const phone = document.getElementById('gen-phone').value.trim();
             const pkg = document.getElementById('gen-package-display').value;
@@ -540,7 +537,6 @@
             }
         };
 
-        // Customer Searches Order & Downloads Video
         window.searchCustomerOrder = function() {
             const phone = document.getElementById('search-phone-input').value.trim();
             const box = document.getElementById('search-result-box');
@@ -579,7 +575,6 @@
             window.switchTab('upload-hub');
         };
 
-        // Admin Render Payments
         window.renderPayments = function(payments) {
             cachedPayments = payments;
             const list = document.getElementById('admin-payments-list');
@@ -611,7 +606,6 @@
             list.innerHTML = html;
         };
 
-        // Admin Render Orders & Upload Download Link
         window.renderOrders = function(orders) {
             cachedOrders = orders;
             const list = document.getElementById('admin-orders-list');
@@ -665,7 +659,6 @@
             alert("Download link saved! Customer can now download their video.");
         };
 
-        // Click Circle Animation
         window.addEventListener('click', e => {
             const c = document.createElement('div');
             c.className = 'click-circle'; c.style.left = `${e.pageX}px`; c.style.top = `${e.pageY}px`;
